@@ -119,6 +119,9 @@ Ensure you have an **API key** for Gemini (or any other NLP model you're using) 
 - **Database Errors**: If you face issues with database connection or query execution, ensure `banking.db` is created successfully by `load_data.py` and contains valid data.
 
 ---
+![Screenshot 2025-02-22 141434](https://github.com/user-attachments/assets/7d0aa8ae-3d47-47ab-a306-be71b004f510)
+![Screenshot 2025-02-22 141403](https://github.com/user-attachments/assets/0ce896e6-a3cf-4a36-91f2-1cbf3e06316e)
+
 
 ### 🚀 *Now you're ready to run the AI-powered NLP to SQL Query System!* 🎉
 
