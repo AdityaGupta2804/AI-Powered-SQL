@@ -1,4 +1,4 @@
-#Banking Data Query System
+AI Powered NLP to SQL Query System
 This project allows users to interact with a banking dataset by sending natural language queries. It processes these queries and generates SQL queries using the free Gemini API and then executes those queries against a database.
 
 To run the Project :
