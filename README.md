@@ -90,3 +90,5 @@ Missing Packages: If you encounter errors related to missing Python packages, en
 Gemini API Key: If the Gemini API doesn’t work, double-check that the API key is correctly configured in n2sql.py.
 
 Database Errors: If you run into issues with database connection or query execution, ensure that the banking.db SQLite database is created successfully by load_data.py and contains the correct data.
+
+![Uploading Screenshot 2025-02-22 141434.png…]()
