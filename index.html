@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NL2SQL Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>NL2SQL Converter</h1>
+    <form id="queryForm">
+        <label for="query">Enter your query:</label><br>
+        <textarea id="query" name="query" rows="4" placeholder="e.g., Find all customers with a balance greater than 1000"></textarea><br>
+        <button type="submit">Generate SQL Query</button>
+    </form>
+
+    <h2>Generated SQL Query:</h2>
+    <pre id="sqlQuery"></pre>
+
+    <h2>Query Results:</h2>
+    <pre id="queryResults"></pre>
+
+    <script>
+        document.getElementById("queryForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const query = document.getElementById("query").value;
+
+            // Send the query to the backend
+            const response = await fetch("/nl2sql", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query }),
+            });
+
+            const result = await response.json();
+
+            // Display the SQL query and results
+            if (result.error) {
+                document.getElementById("sqlQuery").textContent = "Error: " + result.error;
+                document.getElementById("queryResults").textContent = "";
+            } else {
+                document.getElementById("sqlQuery").textContent = result.sql_query || "No SQL query generated.";
+                document.getElementById("queryResults").textContent = JSON.stringify(result.result, null, 2) || "No results found.";
+            }
+        });
+    </script>
+</body>
+</html>
